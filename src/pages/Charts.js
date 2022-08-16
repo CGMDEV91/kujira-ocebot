@@ -15,7 +15,7 @@ const Charts = () => {
         <div className="p-4">
           <h6 className="mb-3 ml-4 text-white">DASHBOARD</h6>
           <Row>
-          <Col md={6} >
+          <Col md={12} >
               <div className="p-3">
                 <KujiUSDT />
               </div>

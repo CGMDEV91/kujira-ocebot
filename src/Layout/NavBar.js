@@ -24,7 +24,7 @@ const NavBar = () => {
                             <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/dashboard">
-                            <Nav.Link>Charts</Nav.Link>
+                            <Nav.Link>Dashboard</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/contact">
                             <Nav.Link>Contact</Nav.Link>

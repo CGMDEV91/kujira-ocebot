@@ -21,18 +21,31 @@ ChartJS.register(
     LineElement
 );
 
+const parseDate8h = (precision, startDate) =>{
+    if(precision === '240'){
+        let newDate = new Date();
+        newDate.setDate(newDate.getDate() -3);
+        
+        return new Date(new Date(newDate).toString().split('GMT')[0]+' UTC').toISOString();
+    }
+    return startDate;
+}
 
 const KujiUSDT = () =>  {
 
     const [chart, setChart] = useState([]);
 
-    const getKujiraUSDT = async (precision = '1D', endDate = '2022-08-10T00:00:00.000Z') => {
-        const startDate = '2022-08-03T00:00:00.000Z';
+    const getKujiraUSDT = async (precision = '1D') => {
+        var startDate = '2022-08-03T00:00:00.000Z';
+        const endDate = new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString();
+
+        startDate = parseDate8h(precision, startDate);
+        
         let url = 'https://api.kujira.app/api/trades/candles?contract=kujira14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sl4e867&precision=' + precision + '&from=' + startDate + '&to=' + endDate;
         await fetch(url)
             .then((response) => {response.json()
             .then((json) => {
-                console.log(json.candles);
+                //console.log(json.candles);
                 setChart(json.candles);
             }).catch(error => {
                 console.log(error);
@@ -46,7 +59,7 @@ const KujiUSDT = () =>  {
     *
     */
     useEffect(() => {
-        getKujiraUSDT('1D');
+        getKujiraUSDT();
     }, []);
     /* 
     *
@@ -156,7 +169,7 @@ const KujiUSDT = () =>  {
                                         className="btn-group-toggle float-right"
                                         data-toggle="buttons"
                                         >
-                                        <Button
+                                            <Button
                                             tag="label"
                                             className={classNames("btn-simple", {
                                                 active: "data1"
@@ -164,10 +177,10 @@ const KujiUSDT = () =>  {
                                             color="info"
                                             id="0"
                                             size="sm"
-                                            onClick={() => getKujiraUSDT('1D')}
+                                            onClick={() => getKujiraUSDT('240')}
                                         >
                                             <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                                            1D
+                                            8h
                                             </span>
                                             <span className="d-block d-sm-none">
                                             <i className="tim-icons icon-single-02" />
@@ -181,10 +194,10 @@ const KujiUSDT = () =>  {
                                             color="info"
                                             id="0"
                                             size="sm"
-                                            onClick={() => getKujiraUSDT('240')}
+                                            onClick={() => getKujiraUSDT('1D')}
                                         >
                                             <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                                            7D
+                                            1D
                                             </span>
                                             <span className="d-block d-sm-none">
                                             <i className="tim-icons icon-single-02" />

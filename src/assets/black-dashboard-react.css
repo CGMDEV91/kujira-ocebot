@@ -46,10 +46,7 @@
       color: #9A9A9A;
       margin-bottom: 5px;
       font-weight: 300; }
-  .card .map {
-    border-radius: 0.2857rem; }
-    .card .map.map-big {
-      height: 420px; }
+
   .card.card-white {
     background: #ffffff; }
     .card.card-white .card-title {
@@ -228,9 +225,6 @@
     .card-chart.card-chart-pie .card-title i {
       font-size: 1rem; }
 
-.map {
-  height: 500px; }
-
 .card-user {
   overflow: hidden; }
   .card-user .image {
@@ -367,4 +361,3 @@ select.form-control option {
 
 .btn-sm.btn-simple, .btn-group-sm > .btn-simple.btn {
   padding: 4px 14px; }
-/*# sourceMappingURL=black-dashboard-react.css.map */
