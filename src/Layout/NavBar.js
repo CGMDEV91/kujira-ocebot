@@ -7,10 +7,10 @@ import {LinkContainer} from 'react-router-bootstrap'
 const NavBar = () => {
     return (
         <>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" className="nav-component" variant="dark">
             <Container>
                 <LinkContainer to="/">
-                    <Navbar.Brand h>Kujira-Track
+                    <Navbar.Brand >Kujira-Track
                     <img 
                         className="ml-2 img-brand"
                         alt="logo"
@@ -23,8 +23,8 @@ const NavBar = () => {
                         <LinkContainer to="/">
                             <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/blogs">
-                            <Nav.Link>Blogs</Nav.Link>
+                        <LinkContainer to="/dashboard">
+                            <Nav.Link>Charts</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/contact">
                             <Nav.Link>Contact</Nav.Link>

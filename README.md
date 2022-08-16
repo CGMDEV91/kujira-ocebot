@@ -1,5 +1,11 @@
 # Getting Started with Create React App
 
+## ENDPOINTS
+This endpoint get the info based on a precision 1D and FROM TO parameters
+
+https://api.kujira.app/api/trades/candles?contract=kujira&precision=1D&from=2022-01-01T00:00:00.572Z&to=2022-08-01T00:00:00.572Z
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
