@@ -21,9 +21,6 @@ const NavBar = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <LinkContainer to="/">
-                            <Nav.Link>Home</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/dashboard">
                             <Nav.Link>Dashboard</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/contact">

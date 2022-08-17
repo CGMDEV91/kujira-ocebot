@@ -1,6 +1,7 @@
 import React, {useEffect,useState} from "react";
 import {Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale} from 'chart.js';
 import {Line} from 'react-chartjs-2';
+import Constants from "../Global/Constants";
 import {
     Button,
     ButtonGroup,
@@ -31,17 +32,17 @@ const parseDate8h = (precision, startDate) =>{
     return startDate;
 }
 
-const KujiUSDT = () =>  {
+const KujiUSDC = () =>  {
 
     const [chart, setChart] = useState([]);
 
-    const getKujiraUSDT = async (precision = '1D') => {
+    const getKujiraUSDC = async (precision = '1D') => {
         var startDate = '2022-08-03T00:00:00.000Z';
         const endDate = new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString();
 
         startDate = parseDate8h(precision, startDate);
         
-        let url = 'https://api.kujira.app/api/trades/candles?contract=kujira14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sl4e867&precision=' + precision + '&from=' + startDate + '&to=' + endDate;
+        let url = 'https://api.kujira.app/api/trades/candles?contract=' + Constants.KUJI_axlUSDC + '&precision=' + precision + '&from=' + startDate + '&to=' + endDate;
         await fetch(url)
             .then((response) => {response.json()
             .then((json) => {
@@ -59,7 +60,7 @@ const KujiUSDT = () =>  {
     *
     */
     useEffect(() => {
-        getKujiraUSDT();
+        getKujiraUSDC();
     }, []);
     /* 
     *
@@ -127,7 +128,7 @@ const KujiUSDT = () =>  {
         }
     }
 
-    var chart1 = {
+    var lineChart = {
         
         data: {
             labels: chart?.map(x => x.bin.substring(0,10)),
@@ -162,7 +163,7 @@ const KujiUSDT = () =>  {
                             <CardHeader>
                                 <Row>
                                     <Col className="text-left" sm="6">
-                                        <CardTitle tag="h3">KUJI/USDT</CardTitle>
+                                        <CardTitle tag="h3">KUJI/USDC</CardTitle>
                                     </Col>
                                     <Col sm="6" className="text-right">
                                         <ButtonGroup
@@ -177,7 +178,7 @@ const KujiUSDT = () =>  {
                                             color="info"
                                             id="0"
                                             size="sm"
-                                            onClick={() => getKujiraUSDT('240')}
+                                            onClick={() => getKujiraUSDC('240')}
                                         >
                                             <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                                             8h
@@ -194,7 +195,7 @@ const KujiUSDT = () =>  {
                                             color="info"
                                             id="0"
                                             size="sm"
-                                            onClick={() => getKujiraUSDT('1D')}
+                                            onClick={() => getKujiraUSDC('1D')}
                                         >
                                             <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                                             1D
@@ -211,7 +212,7 @@ const KujiUSDT = () =>  {
                                             id="1"
                                             size="sm"
                                             tag="label"
-                                            onClick={() => getKujiraUSDT('1M')}
+                                            onClick={() => getKujiraUSDC('1M')}
                                         >
                                             <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                                             1M
@@ -228,7 +229,7 @@ const KujiUSDT = () =>  {
                                             id="2"
                                             size="sm"
                                             tag="label"
-                                            onClick={() => getKujiraUSDT('12M')}
+                                            onClick={() => getKujiraUSDC('12M')}
                                         >
                                             <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                                             12M
@@ -245,8 +246,8 @@ const KujiUSDT = () =>  {
                                 <div className="chart-area">
                                     <Line 
                                         width={400}
-                                        data={chart1.data}
-                                        options={chart1.options}
+                                        data={lineChart.data}
+                                        options={lineChart.options}
                                     />
                                 </div>
                             </CardBody>
@@ -258,4 +259,4 @@ const KujiUSDT = () =>  {
     )
 }
 
-export default KujiUSDT;
+export default KujiUSDC;
