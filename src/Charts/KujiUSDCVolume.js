@@ -22,7 +22,7 @@ ChartJS.register(
     LineElement
 );
 
-const parseDate8h = (precision, startDate) =>{
+const parseDate4h = (precision, startDate) =>{
     if(precision === '240'){
         let newDate = new Date();
         newDate.setDate(newDate.getDate() -3);
@@ -32,7 +32,7 @@ const parseDate8h = (precision, startDate) =>{
     return startDate;
 }
 
-const KujiUSDC = () =>  {
+const KujiUSDCVolume = () =>  {
 
     const [chart, setChart] = useState([]);
     const [chartTime, setChartTime] = useState('');
@@ -55,10 +55,11 @@ const KujiUSDC = () =>  {
                 setChartTime(precision);
                 break;
         }
+        
         var startDate = '2022-08-03T00:00:00.000Z';
         const endDate = new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString();
 
-        startDate = parseDate8h(precision, startDate);
+        startDate = parseDate4h(precision, startDate);
         
         let url = 'https://api.kujira.app/api/trades/candles?contract=' + Constants.KUJI_axlUSDC + '&precision=' + precision + '&from=' + startDate + '&to=' + endDate;
         await fetch(url)
@@ -72,19 +73,15 @@ const KujiUSDC = () =>  {
         });
     }
 
-    /* 
-    *
-    * USE EFFECT AND FETCH 
-    *
-    */
     useEffect(() => {
         getKujiraUSDC();
     }, []);
-    /* 
-    *
-    * END USE EFFECT AND FETCH 
-    *
-    */
+
+    function numberWithCommas(x) {
+        var parts = x.toString().split(".");
+        parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,".");
+        return parts.join(",");
+    }
 
     var optionsChart = {
         maintainAspectRatio: false,
@@ -110,7 +107,7 @@ const KujiUSDC = () =>  {
                 },
                 ticks:{
                     callback: function(value, index, ticks) {
-                        return '$ ' + value;
+                        return numberWithCommas(value);
                     },
                     beginAtZero: true,
                     color: '#a0a0a0',
@@ -152,7 +149,7 @@ const KujiUSDC = () =>  {
             labels: chart?.map(x => x.bin.substring(0,10)),
             datasets: [{
                 label: 'Price',
-                data: chart?.map(x => x.close.substring(0,5)),
+                data: chart?.map(x => x.volume),
                 backgroundColor: [
                     "#1f8ef1",
                 ],
@@ -181,7 +178,7 @@ const KujiUSDC = () =>  {
                             <CardHeader>
                                 <Row>
                                     <Col className="text-left" sm="6">
-                                        <CardTitle tag="h3">KUJI/USDC <span className="h5 text-secondary">( {chartTime} )</span></CardTitle>
+                                        <CardTitle tag="h3">KUJI Volume  <span className="h5 text-secondary">( {chartTime} )</span></CardTitle>
                                     </Col>
                                     <Col sm="6" className="text-right">
                                         <ButtonGroup
@@ -277,4 +274,4 @@ const KujiUSDC = () =>  {
     )
 }
 
-export default KujiUSDC;
+export default KujiUSDCVolume;
