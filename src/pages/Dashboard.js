@@ -1,26 +1,23 @@
-import TokenPricesChart from "../Charts/TokenPricesChart";
 import KujiUSDC from "../Charts/KujiUSDC";
-import PairVolumes from "../Tables/PairVolumes";
-import BarChartTotalVolumes from "../Charts/BarChartTotalVolumes";
+import PairsInformationTable from "../Tables/PairsInformationTable";
 import KujiUSDCVolume from "../Charts/KujiUSDCVolume";
+import PairVolumesTable from "../Tables/PairVolumesTable";
 import {
   Row,
   Col,
 } from "reactstrap";
 import InformationBar from "../Layout/InformationBar";
+import PairVolumesChart from "../Charts/PairVolumesChart";
+import TransactionsChart from "../Charts/TransactionsChart";
+import StakingEvolutionChart from "../Charts/StakingEvolutionChart";
 
 
 const Dashboard = () => {
     return (
       <>
-        <div class="container-fluid">
-          <Row className="text-center pt-3">
-            <Col>
-              <h6 className="text-white">DASHBOARD</h6>
-            </Col>
-          </Row>
+        <div className="container-fluid">
           
-          <Row className="pl-4 pr-4">
+          <Row className="pt-4 pl-4 pr-4">
             <Col md={12} >
               <div className="p-3">
                 <KujiUSDC />
@@ -34,19 +31,29 @@ const Dashboard = () => {
                 <KujiUSDCVolume />
               </div>
             </Col>
+            <Col md={6} >
+              <div className="pl-3 pr-3 ">
+                <PairVolumesChart />
+              </div>
+            </Col>
+            <Col md={6} >
+              <div className="">
+                <PairVolumesTable />
+              </div>
+            </Col>
             <Col md={12} >
               <div className="">
-                <PairVolumes />
+                <TransactionsChart />
               </div>
             </Col>
-            <Col md={6} >
-              <div className="p-3">
-                <BarChartTotalVolumes />
+            <Col md={12} >
+              <div className="">
+                <StakingEvolutionChart />
               </div>
             </Col>
-            <Col md={6} >
-              <div className="p-3">
-                <TokenPricesChart />
+            <Col md={12} >
+              <div className="">
+                <PairsInformationTable />
               </div>
             </Col>
           </Row>

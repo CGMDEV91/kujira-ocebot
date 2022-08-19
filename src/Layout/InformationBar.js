@@ -76,7 +76,7 @@ const InformationBar = () => {
 
     return (
         <>
-            <div className="mb-4 bg-light">
+            <div className="mb-2 bg-light">
                 <Row className="text-center information-bar p-4">
                     <Col md={4} className="">
                         <Row className="">
@@ -95,7 +95,7 @@ const InformationBar = () => {
                     <Col md={4} className="">
                         <Row>
                             <Col sm={6}><h5 className="text-white mt-2">Total Staked</h5></Col>
-                            <Col sm={6}><div className="text-white h3">{stakedTokens}</div></Col>
+                            <Col sm={6}><div className="text-white h2">{stakedTokens}</div></Col>
                         </Row>
                     </Col>
                 </Row>
