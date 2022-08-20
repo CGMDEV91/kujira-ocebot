@@ -37,18 +37,6 @@ const InformationBar = () => {
         })
     }
 
-    function numberWithCommas(x) {
-        if(x === null || x === 0){
-            return 'no data available';
-        }
-        if(x === undefined){
-            return 0;
-        }
-        var parts = x.toString().split(",");
-        parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,",");
-        return parts.join(".");
-    }
-
     const getStakedTokens = async () => {
 
         await fetch('https://lcd.kaiyo.kujira.setten.io/cosmos/staking/v1beta1/pool')
@@ -81,21 +69,21 @@ const InformationBar = () => {
                     <Col md={4} className="">
                         <Row className="">
                             <Col sm={6}><h5 className="text-white mt-2">Total Transactions</h5></Col>
-                            <Col sm={6}><div className="text-white h2">{numberWithCommas(transactions)}</div></Col>
+                            <Col sm={6}><div className="information-text text-white h2">{numberWithCommas(transactions)}</div></Col>
                             <hr className="text-white border-none border-bottom"></hr>  
                         </Row>
                     </Col>
                     <Col md={4} className="">
                         <Row className="set-borders">
                             <Col sm={6}><h5 className="text-white mt-2">Kujira / USDC</h5></Col>
-                            <Col sm={6}><div className="text-white h2">${ kujiraPrice}</div></Col>
+                            <Col sm={6}><div className="information-text text-white h2">${ kujiraPrice}</div></Col>
                             <hr className="text-white border-none border-bottom"></hr>  
                         </Row>
                     </Col>
                     <Col md={4} className="">
                         <Row>
                             <Col sm={6}><h5 className="text-white mt-2">Total Staked</h5></Col>
-                            <Col sm={6}><div className="text-white h2">{stakedTokens}</div></Col>
+                            <Col sm={6}><div className="information-text text-white h2">{stakedTokens}</div></Col>
                         </Row>
                     </Col>
                 </Row>

@@ -152,7 +152,7 @@ const KujiUSDC = () =>  {
             labels: chart?.map(x => x.bin.substring(0,10)),
             datasets: [{
                 label: 'Price',
-                data: chart?.map(x => x.close.substring(0,5)),
+                data: chart?.map(x => parseFloat(x.close.substring(0,5)).toFixed(3)),
                 backgroundColor: [
                     "#1e92e6",
                 ],
@@ -198,7 +198,7 @@ const KujiUSDC = () =>  {
                                             size="sm"
                                             onClick={() => getKujiraUSDC('240')}
                                         >
-                                            <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                            <span className="chart-button-text d-sm-block d-md-block d-lg-block d-xl-block">
                                             4h
                                             </span>
                                             <span className="d-block d-sm-none">
@@ -215,7 +215,7 @@ const KujiUSDC = () =>  {
                                             size="sm"
                                             onClick={() => getKujiraUSDC('1D')}
                                         >
-                                            <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                            <span className="chart-button-text d-sm-block d-md-block d-lg-block d-xl-block">
                                             1D
                                             </span>
                                             <span className="d-block d-sm-none">
@@ -232,7 +232,7 @@ const KujiUSDC = () =>  {
                                             tag="label"
                                             onClick={() => getKujiraUSDC('1M')}
                                         >
-                                            <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                            <span className="chart-button-text d-sm-block d-md-block d-lg-block d-xl-block">
                                             1M
                                             </span>
                                             <span className="d-block d-sm-none">
@@ -249,7 +249,7 @@ const KujiUSDC = () =>  {
                                             tag="label"
                                             onClick={() => getKujiraUSDC('12M')}
                                         >
-                                            <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                            <span className="chart-button-text d-sm-block d-md-block d-lg-block d-xl-block">
                                             12M
                                             </span>
                                             <span className="d-block d-sm-none">

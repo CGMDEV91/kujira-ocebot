@@ -1,3 +1,10 @@
+*{
+  box-sizing: border-box;
+}
+
+footer > .row{
+  margin:0;
+}
 .container{
   max-width: 95%;
 }
@@ -297,7 +304,7 @@ hr {
   }
 }
 
-.nav-component{
+.nav-component,footer{
   background: rgb(2,0,36);
   background: linear-gradient(90deg, #22242f 0%, #607d8b 140%);
   
@@ -340,4 +347,102 @@ hr {
   width: 80%;
   padding: 20px;
   text-align: center;
+}
+
+.footer-twitter-container,
+.footer-tips-container{
+  margin: 10px 10px 5px 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color:white;
+}
+
+.footer-twitter-container{
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(74, 212, 227);
+}
+
+.img-ocekuji-footer{
+  max-width: 35px;
+  border-radius: 100%;
+}
+
+.ocebot-twitter-link{
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  text-decoration: none !important;
+}
+
+.ocebot-twitter-link:hover{
+  color: rgb(113, 113, 113);
+}
+
+.ocebot-tips{
+  position: relative;
+}
+
+
+.logo-twitter{
+  width: 30px;
+}
+
+.footer-wallet{
+  background-color: rgb(95, 95, 95);
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+}
+
+.copy-address{
+  width: 30px;
+  padding: 3px;
+}
+.copy-address:hover{
+  background-color: rgb(199, 199, 199);
+  border-radius: 5px;
+}
+
+.copied-address-notification{
+  position: absolute;
+  right: 45%;
+  z-index: 10;
+  padding: 0 10px;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, #1e92e6 0%, #60fbd0 140%);
+  border-radius: 5px;
+}
+
+
+@media (max-width: 968px) {
+  .information-text{
+    margin-top: 10px;
+    font-size: 25px;
+  }
+}
+@media (max-width: 768px) {
+  .information-text{
+    margin-top: 0;
+  }
+}
+
+.ocebot-page-link{
+  font-weight: bold;
+  text-decoration: none !important;
+  color:rgb(0, 172, 238);
+}
+
+.ocebot-page-link:hover{
+  color:#a4a4a4;
+}
+
+
+
+@media (max-width: 468px) {
+  .chart-button-text{
+    font-size: 10px !important;
+  }
+  .btn-sm.btn-simple{
+    padding: 0 10px;
+  }
 }
