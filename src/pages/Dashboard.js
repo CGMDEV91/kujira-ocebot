@@ -47,16 +47,16 @@ const Dashboard = () => {
       <>
         <div className="container-fluid">
 
-        <Row className="pt-4 ml-4 mr-4">
+        <Row className="pt-4 pt-md-4 ml-md-4 mr-md-4">
             <div className="col-12">
-              <p className="h6 kujira-finder-label">Kujira Finder</p>
+              <p className="d-none d-md-block h6 kujira-finder-label">Kujira Finder</p>
             </div>
             <div className="col-12 d-flex">
               <InputGroup>
                 <FormControl
                   id="search-button" 
                   className="search-bar"
-                  placeholder="Addres/ TX /Block/ Contract"
+                  placeholder="Addres/ TX / Block/ Contract"
                   aria-label="Search"
               />
               </InputGroup>
@@ -64,7 +64,7 @@ const Dashboard = () => {
             </div>
           </Row>
 
-          <Row className="mt-3 pl-md-4 pr-md-4 pt-4">
+          <Row className="mt-2 pl-md-4 pr-md-4 pt-4">
             <Col md={6} >
               <div className="pl-0 pr-0 pl-md-3 pr-md-3">
                 <KujiUSDC />

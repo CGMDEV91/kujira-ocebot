@@ -3,8 +3,6 @@ import {Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale}
 import {Line} from 'react-chartjs-2';
 import Constants from "../Global/Constants";
 import {
-    Button,
-    ButtonGroup,
     Card,
     CardHeader,
     CardBody,
@@ -13,7 +11,6 @@ import {
     Col
   } from "reactstrap";
 
-import classNames from "classnames";
 import BlurEffect from "../GenericComponents/BlurEffect";
 
 ChartJS.register(
