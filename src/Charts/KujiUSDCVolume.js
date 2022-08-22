@@ -177,7 +177,7 @@ const KujiUSDCVolume = () =>  {
     
     return (
         <>
-            <div className="content">
+            <div className="content chart-container">
                 {
                     loading && (<BlurEffect text="Loading..." />)
                 }

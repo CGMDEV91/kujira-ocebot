@@ -11,7 +11,6 @@ import PairVolumesChart from "../Charts/PairVolumesChart";
 import TransactionsChart from "../Charts/TransactionsChart";
 import StakingEvolutionChart from "../Charts/StakingEvolutionChart";
 
-
 const Dashboard = () => {
     return (
       <>

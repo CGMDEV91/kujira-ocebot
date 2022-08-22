@@ -85,7 +85,6 @@ const KujiUSDC = () =>  {
     */
     useEffect(() => {
         getKujiraUSDC();
-
     }, []);
     /* 
     *
