@@ -460,4 +460,31 @@ color:#a4a4a4;
     font-size: 12px;
 }
 
-  
+.search-bar{
+    border-radius: 0.25rem;
+    padding: 0.5625rem;
+    box-shadow: 0 0 0 1px #607d8b1a;
+    transition: all .2s;
+    background-color: #161721;
+    color: white;
+}
+
+.search-bar:focus{
+    box-shadow: 0 0 0 1px #60fbd0;
+    color: white;
+    background-color: #161721;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+.search-button{
+    border: none;
+    background: linear-gradient(45deg,#1e92e6,#60fbd0 75%,#1c6599 150%);
+    background-size: 300% 100%;
+    font-weight: 600;
+    color: white;
+    border-radius: 0.25rem;
+}
+
+.kujira-finder-label{
+    color: rgb(206, 206, 206);
+}

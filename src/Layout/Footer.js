@@ -56,7 +56,7 @@ const Footer = () => {
                         </Row>
                     </div>
                     <div className="col-12 footer-copyright text-center py-3 text-white">© 2022 Copyright:
-                        <a class="ocebot-page-link" href="https://www.ocebot.com/"> Ocebot</a>
+                        <a className="ocebot-page-link" href="https://www.ocebot.com/"> Ocebot</a>
                     </div>
                 </Row>
             </footer>

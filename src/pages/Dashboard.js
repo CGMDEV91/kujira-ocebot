@@ -5,17 +5,65 @@ import PairVolumesTable from "../Tables/PairVolumesTable";
 import {
   Row,
   Col,
-} from "reactstrap";
+  InputGroup,
+  FormControl
+} from "react-bootstrap";
 import InformationBar from "../Layout/InformationBar";
 import PairVolumesChart from "../Charts/PairVolumesChart";
 import TransactionsChart from "../Charts/TransactionsChart";
 import StakingEvolutionChart from "../Charts/StakingEvolutionChart";
+import { Button } from "reactstrap";
 
 const Dashboard = () => {
+
+  const sendRedirect = () => {
+    var searchInformation = document.getElementById('search-button').value;
+    const url = 'https://finder.kujira.app/kaiyo-1';
+    var txCondition = '';
+
+    txCondition = new RegExp("(?=.*[A-Z])(?=.*\\d).+$");
+    if(txCondition.test(searchInformation)){
+      window.open(url + '/tx/' + searchInformation,'_blank');
+    }
+
+    txCondition = new RegExp('^[0-9]+$');
+    if(txCondition.test(searchInformation)){
+      window.open(url + '/block/' + searchInformation,'_blank');
+    }
+
+    txCondition = new RegExp("kujira14");
+    if(txCondition.test(searchInformation)){
+      window.open(url + '/contract/' + searchInformation,'_blank');
+    }
+
+    txCondition = new RegExp("kujira");
+    if(txCondition.test(searchInformation)){
+      window.open(url + '/address/' + searchInformation,'_blank');
+    }
+
+}
+
     return (
       <>
         <div className="container-fluid">
-          
+
+        <Row className="pt-4 ml-4 mr-4">
+            <div className="col-12">
+              <p className="h6 kujira-finder-label">Kujira Finder</p>
+            </div>
+            <div className="col-12 d-flex">
+              <InputGroup>
+                <FormControl
+                  id="search-button" 
+                  className="search-bar"
+                  placeholder="Addres/ TX /Block/ Contract"
+                  aria-label="Search"
+              />
+              </InputGroup>
+              <Button  className="search-button ml-2 pl-3 pr-3" onClick={sendRedirect}>Search</Button>
+            </div>
+          </Row>
+
           <Row className="mt-3 pl-md-4 pr-md-4 pt-4">
             <Col md={6} >
               <div className="pl-0 pr-0 pl-md-3 pr-md-3">
