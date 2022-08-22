@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/kujira-ocebot/static/css/main.d1382a0b.css",
+    "main.js": "/kujira-ocebot/static/js/main.39fc66db.js",
+    "static/media/twitter.png": "/kujira-ocebot/static/media/twitter.ddf5c5ceffee1ec4d2aa.png",
+    "index.html": "/kujira-ocebot/index.html",
+    "main.d1382a0b.css.map": "/kujira-ocebot/static/css/main.d1382a0b.css.map",
+    "main.39fc66db.js.map": "/kujira-ocebot/static/js/main.39fc66db.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d1382a0b.css",
+    "static/js/main.39fc66db.js"
+  ]
+}
