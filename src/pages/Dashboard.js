@@ -17,37 +17,39 @@ const Dashboard = () => {
       <>
         <div className="container-fluid">
           
-          <Row className="pt-4 pl-4 pr-4">
-            <Col md={12} >
-              <div className="p-3">
+          <Row className="mt-3 pl-md-4 pr-md-4 pt-4">
+            <Col md={6} >
+              <div className="pl-0 pr-0 pl-md-3 pr-md-3">
                 <KujiUSDC />
               </div>
             </Col>
-          </Row>
-          <InformationBar/>
-          <Row className="pl-4 pr-4 pt-4">
-            <Col md={12} >
-              <div className="p-3">
-                <KujiUSDCVolume />
+            <Col md={6} >
+              <div className="mt-0  mb-md-2 pl-0 pr-0 pl-md-3 pr-md-3">
+              <KujiUSDCVolume />
               </div>
             </Col>
+          </Row>
+          <div className="pb-2 pb-md-4">
+            <InformationBar />
+          </div>
+          <Row className="mt-3 mt-md-2 pl-md-4 pr-md-4">
             <Col md={6} >
-              <div className="pl-3 pr-3 ">
+              <div className="pl-0 pr-0 pl-md-3 pr-md-3">
                 <PairVolumesChart />
               </div>
             </Col>
             <Col md={6} >
-              <div className="">
+              <div className="pl-0 pr-0 pl-md-3 pr-md-3">
                 <PairVolumesTable />
               </div>
             </Col>
             <Col md={12} >
-              <div className="">
+              <div className="pl-0 pr-0 pl-md-3 pr-md-3">
                 <TransactionsChart />
               </div>
             </Col>
             <Col md={12} >
-              <div className="">
+              <div className="pl-0 pr-0 pl-md-3 pr-md-3">
                 <StakingEvolutionChart />
               </div>
             </Col>

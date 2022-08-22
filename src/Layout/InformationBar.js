@@ -8,9 +8,9 @@ import Constants from "../Global/Constants";
 import {numberWithCommas} from "../Global/Helpers";
 
 const InformationBar = () => {
-    const [transactions, setTransactions] = useState();
-    const [kujiraPrice, setKujiraPrice] = useState();
-    const [stakedTokens, setStakedTokens] = useState();
+    const [transactions, setTransactions] = useState(0);
+    const [kujiraPrice, setKujiraPrice] = useState(0);
+    const [stakedTokens, setStakedTokens] = useState(0);
 
     const getTotalTransactions = async () => {
         await fetch('https://api.kujira.app/api/txs/count')
@@ -52,38 +52,39 @@ const InformationBar = () => {
     }
 
     useEffect(() => {
-    const interval = setInterval(() => {
-        getTotalTransactions();
-        getKujiraCurrentPrice();
-        getStakedTokens();
-    }, 1000);
-    return () => {
-        clearInterval(interval);
-    };
+        const interval = setInterval(() => {
+            getTotalTransactions();
+            getKujiraCurrentPrice();
+            getStakedTokens();
+        }, 1000);
+        return () => {
+            clearInterval(interval);
+        };
+        
     }, []);
 
     return (
         <>
             <div className="mb-2 bg-light">
-                <Row className="text-center information-bar p-4">
+                <Row className="text-center information-bar p-3">
                     <Col md={4} className="">
                         <Row className="">
                             <Col sm={6}><h5 className="text-white mt-2">Total Transactions</h5></Col>
-                            <Col sm={6}><div className="information-text text-white h2">{numberWithCommas(transactions)}</div></Col>
+                            <Col sm={6}><div className="information-text text-white h3">{numberWithCommas(transactions) === 'No data available' ? 'Loading...' : numberWithCommas(transactions)}</div></Col>
                             <hr className="text-white border-none border-bottom"></hr>  
                         </Row>
                     </Col>
                     <Col md={4} className="">
                         <Row className="set-borders">
                             <Col sm={6}><h5 className="text-white mt-2">Kujira / USDC</h5></Col>
-                            <Col sm={6}><div className="information-text text-white h2">${ kujiraPrice}</div></Col>
+                            <Col sm={6}><div className="information-text text-white h3">{ kujiraPrice === 0 ? 'Loading...' : '$' + kujiraPrice}</div></Col>
                             <hr className="text-white border-none border-bottom"></hr>  
                         </Row>
                     </Col>
                     <Col md={4} className="">
                         <Row>
                             <Col sm={6}><h5 className="text-white mt-2">Total Staked</h5></Col>
-                            <Col sm={6}><div className="information-text text-white h2">{stakedTokens}</div></Col>
+                            <Col sm={6}><div className="information-text text-white h3">{stakedTokens === 0 ? 'Loading...' : stakedTokens}</div></Col>
                         </Row>
                     </Col>
                 </Row>

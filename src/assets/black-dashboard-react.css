@@ -405,7 +405,7 @@ hr {
 
 .copied-address-notification{
   position: absolute;
-  right: 45%;
+  right: 50%;
   z-index: 10;
   padding: 0 10px;
   background: rgb(2,0,36);
@@ -421,6 +421,9 @@ hr {
   }
 }
 @media (max-width: 768px) {
+  .copied-address-notification{
+    right: 40%;
+  }
   .information-text{
     margin-top: 0;
   }
@@ -435,8 +438,6 @@ hr {
 .ocebot-page-link:hover{
   color:#a4a4a4;
 }
-
-
 
 @media (max-width: 468px) {
   .chart-button-text{

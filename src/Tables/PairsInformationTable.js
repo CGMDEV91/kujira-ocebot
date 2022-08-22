@@ -7,11 +7,7 @@ import {
 
   import {
     Card,
-    CardBody,
-    Row,
-    CardTitle,
-    CardHeader,
-    CardFooter
+    CardBody
   } from "reactstrap";
 
 const PairVolumes = () => {
@@ -34,7 +30,7 @@ const PairVolumes = () => {
 
     return (
         <>
-            <Col>
+            <Col className="pl-0 pr-0 pl-md-3 pr-md-3">
             <Card>
               <CardBody>
                 <Table className="tablesorter" responsive>
@@ -76,7 +72,7 @@ const PairVolumes = () => {
                   </tbody>
                 </Table>
               </CardBody>
-                <p className="ml-4 text-secondary">(Information obtained from Coingecko-API)</p>
+                <p className="ml-4 text-secondary footer-table-coingecko">(Information obtained from Coingecko-API)</p>
             </Card>
           </Col>
         </>

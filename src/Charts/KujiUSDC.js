@@ -2,6 +2,7 @@ import React, {useEffect,useState} from "react";
 import {Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale} from 'chart.js';
 import {Line} from 'react-chartjs-2';
 import Constants from "../Global/Constants";
+import BlurEffect from "../GenericComponents/BlurEffect";
 import {
     Button,
     ButtonGroup,
@@ -36,8 +37,12 @@ const KujiUSDC = () =>  {
 
     const [chart, setChart] = useState([]);
     const [chartTime, setChartTime] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const getKujiraUSDC = async (precision = '1D') => {
+
+        setLoading(true);
+
         switch(precision){
             case '240':
                 setChartTime('4h');
@@ -66,6 +71,7 @@ const KujiUSDC = () =>  {
             .then((json) => {
                 //console.log(json.candles);
                 setChart(json.candles);
+                setLoading(false);
             }).catch(error => {
                 console.log(error);
             })
@@ -79,6 +85,7 @@ const KujiUSDC = () =>  {
     */
     useEffect(() => {
         getKujiraUSDC();
+
     }, []);
     /* 
     *
@@ -174,7 +181,11 @@ const KujiUSDC = () =>  {
     
     return (
         <>
-            <div className="content">
+            <div className="content chart-container">
+                {
+                    loading && (<BlurEffect text="Loading..." />)
+                }
+                
                 <Row>
                     <Col xs="12">
                         <Card className="card-chart">

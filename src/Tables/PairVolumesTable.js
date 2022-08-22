@@ -68,7 +68,7 @@ const PairsInformationTable = () => {
 
     return (
         <>
-            <Col>
+            <Col className="pl-0 pr-0">
             <Card>
               <CardBody>
                 <Table className="tablesorter" responsive>

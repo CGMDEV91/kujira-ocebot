@@ -2,6 +2,7 @@ import React, {useEffect,useState} from "react";
 import {Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale} from 'chart.js';
 import {Line} from 'react-chartjs-2';
 import Constants from "../Global/Constants";
+import BlurEffect from "../GenericComponents/BlurEffect";
 import {
     Button,
     ButtonGroup,
@@ -36,8 +37,12 @@ const KujiUSDCVolume = () =>  {
 
     const [chart, setChart] = useState([]);
     const [chartTime, setChartTime] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const getKujiraUSDC = async (precision = '1D') => {
+
+        setLoading(true);
+
         switch(precision){
             case '240':
                 setChartTime('4h');
@@ -67,6 +72,7 @@ const KujiUSDCVolume = () =>  {
             .then((json) => {
                 //console.log(json.candles);
                 setChart(json.candles);
+                setLoading(false);
             }).catch(error => {
                 console.log(error);
             })
@@ -93,7 +99,7 @@ const KujiUSDCVolume = () =>  {
                 callbacks: {
                     label: function(context) {
                         let label = context.dataset.label || '';
-                        return label + ' $' + context.parsed.y;
+                        return label + ' ' + numberWithCommas(context.parsed.y);
                     }
                 }
             }
@@ -148,8 +154,8 @@ const KujiUSDCVolume = () =>  {
         data: {
             labels: chart?.map(x => x.bin.substring(0,10)),
             datasets: [{
-                label: 'Price',
-                data: chart?.map(x => x.volume),
+                label: 'Volume',
+                data: chart?.map(x => parseFloat(x.volume/1000000).toFixed(2)),
                 backgroundColor: [
                     "#1e92e6",
                 ],
@@ -172,6 +178,9 @@ const KujiUSDCVolume = () =>  {
     return (
         <>
             <div className="content">
+                {
+                    loading && (<BlurEffect text="Loading..." />)
+                }
                 <Row>
                     <Col xs="12">
                         <Card className="card-chart">
@@ -195,7 +204,7 @@ const KujiUSDCVolume = () =>  {
                                             size="sm"
                                             onClick={() => getKujiraUSDC('240')}
                                         >
-                                            <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                            <span className="chart-button-text d-sm-block d-md-block d-lg-block d-xl-block">
                                             4h
                                             </span>
                                             <span className="d-block d-sm-none">
@@ -212,7 +221,7 @@ const KujiUSDCVolume = () =>  {
                                             size="sm"
                                             onClick={() => getKujiraUSDC('1D')}
                                         >
-                                            <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                            <span className="chart-button-text d-sm-block d-md-block d-lg-block d-xl-block">
                                             1D
                                             </span>
                                             <span className="d-block d-sm-none">
@@ -229,7 +238,7 @@ const KujiUSDCVolume = () =>  {
                                             tag="label"
                                             onClick={() => getKujiraUSDC('1M')}
                                         >
-                                            <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                            <span className="chart-button-text d-sm-block d-md-block d-lg-block d-xl-block">
                                             1M
                                             </span>
                                             <span className="d-block d-sm-none">
@@ -246,7 +255,7 @@ const KujiUSDCVolume = () =>  {
                                             tag="label"
                                             onClick={() => getKujiraUSDC('12M')}
                                         >
-                                            <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                            <span className="chart-button-text d-sm-block d-md-block d-lg-block d-xl-block">
                                             12M
                                             </span>
                                             <span className="d-block d-sm-none">
