@@ -13,6 +13,7 @@ import PairVolumesChart from "../Charts/PairVolumesChart";
 import TransactionsChart from "../Charts/TransactionsChart";
 import StakingEvolutionChart from "../Charts/StakingEvolutionChart";
 import { Button } from "reactstrap";
+import GenericPriceChart from "../Charts/GenericPriceChart";
 
 const Dashboard = () => {
 
@@ -65,6 +66,11 @@ const Dashboard = () => {
           </Row>
 
           <Row className="mt-2 pl-md-4 pr-md-4 pt-4">
+            <Col md={6} >
+              <div className="pl-0 pr-0 pl-md-3 pr-md-3">
+                <GenericPriceChart />
+              </div>
+            </Col>
             <Col md={6} >
               <div className="pl-0 pr-0 pl-md-3 pr-md-3">
                 <KujiUSDC />
